@@ -6,12 +6,12 @@
 
 <br/>
 
-## Section 1 - Cluster Setup and Installation 
+## Section A - Cluster Setup and Installation using EKS Addons (optional) 
 
 ### Step 1. Use the following command to create an EKS Cluster you wish to install istio.  
 
 ```
-eksctl create cluster --nodes 1
+eksctl create cluster --nodes 2
 ```
 
 ### Step 2. Ensure Addon for Tetrate is available.  (Subscription is required) 
@@ -33,3 +33,97 @@ The installation will take about 2 minutes to complete.
 ```
 aws eks describe-addon --addon-name tetrate-io_istio-distro --cluster-name  <CLUSTER_NAME>
 ```
+
+<br/>
+
+
+
+## Section B - Cluster Setup and Installation using GetMesh CLI 
+
+### Step 1. Install GetMesh CLI 
+
+```
+curl -sL https://istio.tetratelabs.io/getmesh/install.sh | bash
+```
+
+### Step 2. Run GetMesh Version Command to validate install
+
+```
+getmesh version
+```
+
+### Step 3. List all GetMesh Istio versions available for install 
+
+```
+getmesh list
+```
+
+```
+user@computer ~ % getmesh list
+ISTIO VERSION	  FLAVOR   	FLAVOR VERSION	   K8S VERSIONS     
+   1.16.0    	  tetrate  	      0       	1.22,1.23,1.24,1.25	
+   *1.16.0   	tetratefips	      0       	1.22,1.23,1.24,1.25	
+   1.16.0    	   istio   	      0       	1.22,1.23,1.24,1.25	
+   1.15.3    	  tetrate  	      0       	1.22,1.23,1.24,1.25	
+   1.15.3    	tetratefips	      0       	1.22,1.23,1.24,1.25	
+   1.15.3    	   istio   	      0       	1.22,1.23,1.24,1.25	
+   1.15.1    	  tetrate  	      0       	1.22,1.23,1.24,1.25	
+   1.15.1    	tetratefips	      0       	1.22,1.23,1.24,1.25	
+   1.15.1    	   istio   	      0       	1.22,1.23,1.24,1.25	
+   1.14.5    	  tetrate  	      0       	1.21,1.22,1.23,1.24	
+   1.14.5    	tetratefips	      0       	1.21,1.22,1.23,1.24	
+   1.14.5    	   istio   	      0       	1.21,1.22,1.23,1.24	
+   1.14.4    	  tetrate  	      0       	1.21,1.22,1.23,1.24	
+   1.14.4    	tetratefips	      0       	1.21,1.22,1.23,1.24	
+   1.14.4    	   istio   	      0       	1.21,1.22,1.23,1.24	
+   1.14.3    	  tetrate  	      0       	1.21,1.22,1.23,1.24	
+   1.14.3    	tetratefips	      0       	1.21,1.22,1.23,1.24	
+   1.14.3    	   istio   	      0       	1.21,1.22,1.23,1.24	
+   1.14.1    	  tetrate  	      0       	1.21,1.22,1.23,1.24	
+   1.14.1    	tetratefips	      0       	1.21,1.22,1.23,1.24	
+   1.14.1    	   istio   	      0       	1.21,1.22,1.23,1.24	
+   1.13.7    	  tetrate  	      0       	1.20,1.21,1.22,1.23	
+   1.13.7    	tetratefips	      0       	1.20,1.21,1.22,1.23	
+   1.13.7    	   istio   	      0       	1.20,1.21,1.22,1.23	
+   1.13.3    	  tetrate  	      0       	1.20,1.21,1.22,1.23	
+   1.13.3    	tetratefips	      0       	1.20,1.21,1.22,1.23	
+   1.13.3    	   istio   	      0       	1.20,1.21,1.22,1.23	
+   1.13.2    	  tetrate  	      0       	1.20,1.21,1.22,1.23	
+   1.13.2    	tetratefips	      0       	1.20,1.21,1.22,1.23	
+   1.13.2    	   istio   	      0       	1.20,1.21,1.22,1.23	
+   1.12.8    	  tetrate  	      0       	1.19,1.20,1.21,1.22	
+   1.12.8    	tetratefips	      0       	1.19,1.20,1.21,1.22	
+   1.12.8    	   istio   	      0       	1.19,1.20,1.21,1.22	
+   1.12.6    	  tetrate  	      0       	1.19,1.20,1.21,1.22	
+   1.12.6    	tetratefips	      0       	1.19,1.20,1.21,1.22	
+   1.12.6    	   istio   	      0       	1.19,1.20,1.21,1.22	
+   1.12.4    	  tetrate  	      0       	1.19,1.20,1.21,1.22	
+   1.12.4    	tetratefips	      0       	1.19,1.20,1.21,1.22	
+   1.12.4    	   istio   	      0       	1.19,1.20,1.21,1.22	
+   1.11.8    	  tetrate  	      0       	1.17,1.18,1.19,1.20	
+   1.11.8    	tetratefips	      0       	1.17,1.18,1.19,1.20	
+   1.11.8    	   istio   	      0       	1.17,1.18,1.19,1.20	
+   1.11.6    	  tetrate  	      1       	1.17,1.18,1.19,1.20	
+   1.11.3    	  tetrate  	      0       	1.17,1.18,1.19,1.20	
+   1.11.6    	tetratefips	      1       	1.17,1.18,1.19,1.20	
+   1.11.3    	tetratefips	      0       	1.17,1.18,1.19,1.20	
+   1.11.3    	   istio   	      0       	1.17,1.18,1.19,1.20	
+   1.10.3    	  tetrate  	      0       	1.17,1.18,1.19,1.20	
+   1.10.3    	tetratefips	      0       	1.17,1.18,1.19,1.20	
+   1.10.3    	   istio   	      0       	1.17,1.18,1.19,1.20	
+
+```
+
+All of the above versions are available for use upon selection.    
+
+
+
+### Step 4. Run the following command to fetch the latest version of istio available through getmesh. 
+### We will use the tetratefips flavor.  This build represents the FIPS verified version.
+
+
+```
+getmesh fetch --version 1.16.0 --flavor tetratefips --flavor-version 0
+```
+
+
