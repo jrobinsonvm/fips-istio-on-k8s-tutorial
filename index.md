@@ -4,7 +4,7 @@
 ## For this tutorial we will be leveraging AWS's EKS and its addon option for Tetrate's FIPS 140-2 compliant and validate build of istio.   
 ### Tetrate has recently become the first company to reach the highest level, FIPS 140-2 verification for Istio.
 
-##### [Please follow the Official Docs for the Tanzu CLI Install](https://tetrate.io/blog/tetrate-istio-distro-achieves-fips-certification/
+##### [Tetrate has recently become the first company to reach the highest level, FIPS 140-2 verification for Istio](https://tetrate.io/blog/tetrate-istio-distro-achieves-fips-certification/
 )
 
 
