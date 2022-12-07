@@ -8,7 +8,7 @@
 
 ## Section 1 - Cluster Setup and Installation 
 
-### Step 1. Use the following command to create your EKS Cluster you wish to install istio.  
+### Step 1. Use the following command to create an EKS Cluster you wish to install istio.  
 
 ```
 eksctl create cluster --nodes 1
