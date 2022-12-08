@@ -14,7 +14,8 @@
 eksctl create cluster --nodes 2
 ```
 
-### Step 2. Ensure Addon for Tetrate is available.  (Subscription is required) 
+### Step 2. Ensure Addon for Tetrate is available.  
+- Subscription is required
 
 ```
 aws eks describe-addon-versions --addon-name tetrate-io_istio-distro 
@@ -119,7 +120,8 @@ All of the above versions are available for use upon selection.
 
 
 ### Step 4. Run the following command to fetch the latest version of istio available through getmesh. 
-### We will use the tetratefips flavor.  This build represents the FIPS verified version.
+-  We will use the tetratefips flavor.  
+-  This build represents the FIPS verified version.
 
 
 ```
@@ -145,7 +147,8 @@ getmesh show
 getmesh istioctl install --set profile=demo
 ```
 
-### Step 8. Apply a label to the namespace(s) you wish to auto inject istio sidecars.  We are using the default namespace in this example.  
+### Step 8. Apply a label to the namespace(s) you wish to auto inject istio sidecars.  
+- We are using the default namespace in this example.  
 
 ```
 kubectl label namespace default istio-injection=enabled
@@ -172,7 +175,9 @@ Your Istio configurations are healthy. Configuration issues not found.
 
 <br/>
 
-## Section 1 - Deploy a sample microservices application (without leveraging istio's ingress capabilities) 
+## Section 1 - Deploy a sample microservices application 
+-  Deployment will not leverage istio's ingress capabilities.  
+-  Section 2 will build on this deployment for ingress.  
 
 ### Step 1. Git clone the following repo to your desired workstation.  
 
@@ -214,4 +219,21 @@ kubectl get service frontend-external | awk '{print $4}'
 curl <IP-Address-or-FQDN>
 ```
 
-### Step 7. 
+<br/>
+
+--------
+
+## Section 2 - Leverage Istio's Ingress Capabilities to handle application traffic.   
+
+### Step 1. Run the following command to deploy istio constructs for your application.  
+#### This will deploy the following components: 
+- An ingress gateway to serve inbound traffic
+- A virtual service for routing to backend hosts 
+- Service entries for outbound traffic external to cluster 
+
+
+```
+kubectl apply -f ./release/istio-manifests.yaml
+```
+
+
