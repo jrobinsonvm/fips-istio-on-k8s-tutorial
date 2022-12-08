@@ -1,15 +1,18 @@
-# Istio on EKS Tutorial 
+# Istio End to End Tutorial 
 
 
-## For this tutorial we will be leveraging AWS's EKS and its addon option for Tetrate's FIPS 140-2 compliant and validate build of istio.   
+## For this tutorial we will be leveraging AWS's EKS along with Tetrate's FIPS 140-2 compliant and validated build of istio.   
 ##### [Tetrate has recently become the first company to reach the highest level, FIPS 140-2 verification for Istio](https://tetrate.io/blog/tetrate-istio-distro-achieves-fips-certification/)
 
 <br/>
 
 ## Prerequisite -  Cluster Setup and Installation.  
 #### - This example uses eksctl however feel free to deploy your cluster using your preferred method.   
+#### - For non-EKS Clusters, please skip to Section B.   This tutorial can be used for local / desktop k8s flavors as well.   
 
-### Use the following command to create an EKS Cluster you wish to install istio.  
+<br/>
+
+### Use the following command to create the EKS Cluster you wish to install istio.  
 
 ```
 eksctl create cluster --nodes 2
