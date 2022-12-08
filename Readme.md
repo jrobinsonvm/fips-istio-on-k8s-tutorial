@@ -302,4 +302,23 @@ kubectl get service istio-ingressgateway -n istio-system | awk '{print $4}'
 ```
 
 
+### Step 3. Try accessing the IP or Domain in your preferred browser or by running the following command.   
+
+```
+curl <IP-Address-or-FQDN>
+```
+
+## Congratulations!!! You have now configured traffic to flow through your istio ingress gateway to reach your application.   
+
+
+<br/>
+
+### Note: 
+### Your application will continue to serve traffic on both the old (traditional LB) and through the gateawy until you configure your application's front-end service to leverage another service type such as "ClusterIP"
+
+
+<br/>
+
+-----------
+
 
