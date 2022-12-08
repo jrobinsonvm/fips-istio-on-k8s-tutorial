@@ -318,11 +318,18 @@ curl <IP-Address-or-FQDN>
 <br/>
 
 ### Note: 
-### Your application will continue to serve traffic on both the old (traditional LB) and through the gateawy until you configure your application's front-end service to leverage another service type such as "ClusterIP"
+### Your application will continue to serve traffic on both the old (traditional LB) and through the gateway until you configure your application's front-end service to leverage another service type such as "ClusterIP"
 
 
 <br/>
 
 -----------
+
+
+## Section 3 - Enable end to end tls (mTLS) 
+
+```
+TBC
+```
 
 
