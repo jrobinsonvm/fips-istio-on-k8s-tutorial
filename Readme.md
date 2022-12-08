@@ -195,10 +195,22 @@ kubectl apply -f ./release/kubernetes-manifests.yaml
 ```
 
 
-### Step 4. Lets use the get pods command to view the status of the deployment
+### Step 4. Lets use the get pods command to view the status of the deployment.  
 
 ```
 kubectl get pods 
 ```
 
-### Step 5. 
+### Step 5. Lets grab the IP or FQDN of our frontend-external service.  
+
+```
+kubectl get service frontend-external | awk '{print $4}'
+```
+
+### Step 6. Try accessing the IP or Domain in your preferred browser or by running the following command.   
+
+```
+curl <IP-Address-or-FQDN>
+```
+
+
