@@ -172,7 +172,7 @@ Your Istio configurations are healthy. Configuration issues not found.
 
 <br/>
 
-## Section 1 - Deploy a sample microservices application 
+## Section 1 - Deploy a sample microservices application (without leveraging istio's ingress capabilities) 
 
 ### Step 1. Git clone the following repo to your desired workstation.  
 
@@ -188,7 +188,8 @@ cd microservices-demo
 ```
 
 
-### Step 3. Deploy the app using kubectl 
+### Step 3. Deploy the app using kubectl
+#### This deployment will not use istio's gateway but rather depend on an external load balancer to allow for a comparison. 
 
 ```
 kubectl apply -f ./release/kubernetes-manifests.yaml
@@ -213,4 +214,4 @@ kubectl get service frontend-external | awk '{print $4}'
 curl <IP-Address-or-FQDN>
 ```
 
-
+### Step 7. 
