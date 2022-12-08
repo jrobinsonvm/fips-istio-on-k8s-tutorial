@@ -1,7 +1,7 @@
 # Istio End to End Tutorial 
 
 
-### For this tutorial we will be leveraging Tetrate's FIPS 140-2 compliant and validated build of istio.   EKS is being used in examples however this tutorial should work for any other kubernetes distributions.   
+### For this tutorial we'll leverage Tetrate's FIPS 140-2 compliant and validated build of istio.   EKS is being used in examples however this tutorial should work for any other kubernetes distributions.   
 
 ##### [Tetrate has recently become the first company to reach the highest level, FIPS 140-2 verification for Istio](https://tetrate.io/blog/tetrate-istio-distro-achieves-fips-certification/)
 
