@@ -127,3 +127,35 @@ getmesh fetch --version 1.16.0 --flavor tetratefips --flavor-version 0
 ```
 
 
+### Step 5. Switch to the istio version you just downloaded via the fetch command 
+
+```
+getmesh switch --version 1.16.0 --flavor tetratefips --flavor-version=0
+```
+
+### Step 6.  Run getmesh show command to show the version of istio that has been configured.   
+
+```
+getmesh show
+```
+
+### Step 7. Install istio installing the demo profile.  
+
+```
+getmesh istioctl install --set profile=demo
+```
+
+### Step 8. Apply a label to the namespace(s) you wish to auto inject istio sidecars.  We are using the default namespace in this example.  
+
+```
+kubectl label namespace default istio-injection=enabled
+```
+
+### Step 9. Now lets use getmesh to validate our installation.  
+
+```
+getmesh config-validate
+```
+
+
+
