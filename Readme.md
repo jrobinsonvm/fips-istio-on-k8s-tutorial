@@ -1,33 +1,24 @@
 # Istio End to End Tutorial 
 
 
-### For this tutorial we will be leveraging AWS's EKS along with Tetrate's FIPS 140-2 compliant and validated build of istio.   This tutorial should work for any other kubernetes distributions.   
+### For this tutorial we will be leveraging Tetrate's FIPS 140-2 compliant and validated build of istio.   EKS is being used in examples however this tutorial should work for any other kubernetes distributions.   
 
 ##### [Tetrate has recently become the first company to reach the highest level, FIPS 140-2 verification for Istio](https://tetrate.io/blog/tetrate-istio-distro-achieves-fips-certification/)
 
 <br/>
 
 ## Prerequisite -  Cluster Setup and Installation.  
-#### - This example uses eksctl however feel free to deploy your cluster using your preferred method.   
-#### - For non-EKS Clusters, please skip to Section B.   This tutorial can be used for local / desktop k8s flavors as well.   
+- Kubernetes Cluster 
+- Development Workstation with Kubectl CLI 
 
 <br/>
-
-### Use the following command to create the EKS Cluster you wish to install istio.  
-
-```
-eksctl create cluster --nodes 2
-```
-<br/>
-
------------
 
 
 ## There are several supported ways to install tetrate's fips compliant istio distribution.  
 #### - Section A - Uses the EKS Addon install method 
  - If you are not authorized to use AWS's Tetrate subscription, please follow Section B instead.  
 
-#### - Section B - Uses a more generic install method which is suited for any kubernetes distribution including but not limited to EKS.   
+#### - Section B - Uses a more generic install method which is suited for any kubernetes distribution including but not limited to EKS, AKS, GKE.   
 
 
 <br/>
@@ -47,7 +38,7 @@ eksctl create cluster --nodes 2
 aws eks describe-addon-versions --addon-name tetrate-io_istio-distro 
 ```
 
-### Step 2. Deploy Addon to your newly created EKS Cluster 
+### Step 2. Deploy Addon to your EKS Cluster 
 
 ```
 aws eks create-addon --addon-name tetrate-io_istio-distro --cluster-name <CLUSTER_NAME>
