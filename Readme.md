@@ -6,22 +6,44 @@
 
 <br/>
 
-## Section A - Cluster Setup and Installation using EKS Addons (optional) 
+## Prerequisite -  Cluster Setup and Installation.  
+#### - This example uses eksctl however feel free to deploy your cluster using your preferred method.   
 
-### Step 1. Use the following command to create an EKS Cluster you wish to install istio.  
+### Use the following command to create an EKS Cluster you wish to install istio.  
 
 ```
 eksctl create cluster --nodes 2
 ```
+<br/>
 
-### Step 2. Ensure Addon for Tetrate is available.  
+-----------
+
+
+## There are several supported ways to install tetrate's fips compliant istio distribution.  
+#### - Section A - Uses the EKS Addon install method 
+ - If you are not authorized to use AWS's Tetrate subscription, please follow Section B instead.  
+
+#### - Section B - Uses a more generic install method which is suited for any kubernetes distribution including but not limited to EKS.   
+
+
+<br/>
+
+<br/>
+
+
+## Section A - Istio Installation using EKS Addons (optional) 
+ - If you are not authorized to use AWS's Tetrate subscription, please follow Section B instead.  
+
+<br/>
+
+### Step 1. Ensure Addon for Tetrate is available.  
 - Subscription is required
 
 ```
 aws eks describe-addon-versions --addon-name tetrate-io_istio-distro 
 ```
 
-### Step 3. Deploy Addon to your newly created EKS Cluster 
+### Step 2. Deploy Addon to your newly created EKS Cluster 
 
 ```
 aws eks create-addon --addon-name tetrate-io_istio-distro --cluster-name <CLUSTER_NAME>
@@ -29,7 +51,7 @@ aws eks create-addon --addon-name tetrate-io_istio-distro --cluster-name <CLUSTE
 The installation will take about 2 minutes to complete.   
 
 
-### Step 4. Run the following command to verify that all components have been installed successfully.  
+### Step 3. Run the following command to verify that all components have been installed successfully.  
 
 ```
 aws eks describe-addon --addon-name tetrate-io_istio-distro --cluster-name  <CLUSTER_NAME>
@@ -39,7 +61,7 @@ aws eks describe-addon --addon-name tetrate-io_istio-distro --cluster-name  <CLU
 
 
 
-## Section B - Cluster Setup and Installation using GetMesh CLI 
+## Section B - Istio Installation using GetMesh CLI 
 
 ### Step 1. Install GetMesh CLI 
 
@@ -201,13 +223,38 @@ kubectl apply -f ./release/kubernetes-manifests.yaml
 ```
 
 
-### Step 4. Lets use the get pods command to view the status of the deployment.  
+### Step 4. Lets use the get pods command with the wait option to monitor the status of our deployment.  
 
 ```
-kubectl get pods 
+kubectl get pods -w
 ```
 
-### Step 5. Lets grab the IP or FQDN of our frontend-external service.  
+
+```
+user@computer microservices-demo % kubectl get pods -w
+NAME                                     READY   STATUS            RESTARTS   AGE
+adservice-69d5d6555-smw4b                1/2     Running           0          12s
+cartservice-6b9f55f654-4s847             1/2     Running           0          14s
+checkoutservice-956bb9589-fnlgc          2/2     Running           0          17s
+currencyservice-59f9b8bd47-cl8d7         0/2     PodInitializing   0          12s
+emailservice-854747bbcc-8tnxk            2/2     Running           0          18s
+frontend-6c75d7fd67-fc7pq                1/2     Running           0          16s
+loadgenerator-7799d6949b-tzfjj           2/2     Running           0          14s
+paymentservice-bbfdb6467-hvqzh           2/2     Running           0          16s
+productcatalogservice-5ffd855ff4-xx7d7   2/2     Running           0          15s
+recommendationservice-56767bbdb9-mk4rn   2/2     Running           0          17s
+redis-cart-6f65887b5d-kvr4j              2/2     Running           0          11s
+shippingservice-7dc9548cf7-njk7r         2/2     Running           0          11s
+frontend-6c75d7fd67-fc7pq                2/2     Running           0          20s
+currencyservice-59f9b8bd47-cl8d7         0/2     Running           0          21s
+currencyservice-59f9b8bd47-cl8d7         1/2     Running           0          22s
+currencyservice-59f9b8bd47-cl8d7         2/2     Running           0          23s
+cartservice-6b9f55f654-4s847             2/2     Running           0          30s
+adservice-69d5d6555-smw4b                2/2     Running           0          46s
+
+```
+
+### Step 5. Now lets grab the IP or FQDN of our frontend-external service.  
 
 ```
 kubectl get service frontend-external | awk '{print $4}'
