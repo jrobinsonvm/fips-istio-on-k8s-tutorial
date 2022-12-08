@@ -157,5 +157,48 @@ kubectl label namespace default istio-injection=enabled
 getmesh config-validate
 ```
 
+You should recieve a message similar to the following.
+
+```
+Your Istio configurations are healthy. Configuration issues not found.
+```
+
+### All done you have completed the installation of a FIPS compliant and validated version of istio!
 
 
+<br/>
+
+-------------------
+
+<br/>
+
+## Section 1 - Deploy a sample microservices application 
+
+### Step 1. Git clone the following repo to your desired workstation.  
+
+```
+git clone https://github.com/jrobinsonvm/microservices-demo.git
+```
+
+
+### Step 2. Switch to the application's directory 
+
+```
+cd microservices-demo
+```
+
+
+### Step 3. Deploy the app using kubectl 
+
+```
+kubectl apply -f ./release/kubernetes-manifests.yaml
+```
+
+
+### Step 4. Lets use the get pods command to view the status of the deployment
+
+```
+kubectl get pods 
+```
+
+### Step 5. 
