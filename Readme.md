@@ -273,6 +273,11 @@ curl <IP-Address-or-FQDN>
 ## Section 2 - Leverage Istio's Ingress Capabilities to handle application traffic.   
 
 ### Step 1. Run the following command to deploy istio constructs for your application.  
+
+```
+kubectl apply -f ./release/istio-manifests.yaml
+```
+
 #### This will deploy the following components: 
 - An ingress gateway to serve inbound traffic
 - A virtual service for routing to backend hosts 
@@ -280,7 +285,21 @@ curl <IP-Address-or-FQDN>
 
 
 ```
-kubectl apply -f ./release/istio-manifests.yaml
+user@computer microservices-demo % kubectl apply -f ./release/istio-manifests.yaml
+
+gateway.networking.istio.io/frontend-gateway created
+virtualservice.networking.istio.io/frontend-ingress created
+serviceentry.networking.istio.io/allow-egress-googleapis created
+serviceentry.networking.istio.io/allow-egress-google-metadata created
+virtualservice.networking.istio.io/frontend created
+
 ```
+
+### Step 2. Lets now grab the IP or FQDN of our Istio Ingress Gateway.  
+
+```
+kubectl get service istio-ingressgateway -n istio-system | awk '{print $4}'
+```
+
 
 
