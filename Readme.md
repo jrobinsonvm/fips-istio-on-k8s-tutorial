@@ -1,7 +1,7 @@
 # Istio End to End Tutorial 
 
 
-### For this tutorial we'll leverage Tetrate's FIPS 140-2 compliant and validated build of istio.   EKS is being used in examples however this tutorial should work for any other kubernetes distributions.   
+### For this tutorial we'll leverage Tetrate's FIPS 140-2 compliant and validated build of istio.   EKS is being used in examples however this tutorial should work for any other kubernetes distributions inclduing those that run locally via your laptop/workstation.   
 
 ##### [Tetrate has recently become the first company to reach the highest level, FIPS 140-2 verification for Istio](https://tetrate.io/blog/tetrate-istio-distro-achieves-fips-certification/)
 
@@ -13,6 +13,7 @@
 
 <br/>
 
+<!-- 
 
 ## There are several supported ways to install tetrate's fips compliant istio distribution.  
 #### - Section A - Uses the EKS Addon install method 
@@ -21,7 +22,7 @@
 #### - Section B - Uses a more generic install method which is suited for any kubernetes distribution including but not limited to EKS, AKS, GKE.   
 
 
-<br/>
+<br/> 
 
 <br/>
 
@@ -54,9 +55,10 @@ aws eks describe-addon --addon-name tetrate-io_istio-distro --cluster-name  <CLU
 
 <br/>
 
+-->
 
+## Section A - Istio Installation using GetMesh CLI 
 
-## Section B - Istio Installation using GetMesh CLI 
 
 ### Step 1. Install GetMesh CLI 
 
